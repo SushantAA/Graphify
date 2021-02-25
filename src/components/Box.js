@@ -1,9 +1,10 @@
 import React from 'react'
 
+import '../style/Box.css'
+
 export default function Box() {
     return (
-        <div>
-            box
+        <div className='Box' >
         </div>
     )
 }

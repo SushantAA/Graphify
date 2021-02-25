@@ -1,12 +1,18 @@
 import React from 'react'
 
+import {mazeArray} from '../logic/mazeCreation'
+
 import Box from './Box'
 
 export default function Maze() {
+    console.log(mazeArray);
     return (
         <div>
-            <h1>Maze</h1>
-            <Box/>
+            {mazeArray.map( (item) =>(
+                    item.map( (i) =>(
+                        <Box/>
+                    ))
+            ))}
         </div>
     )
 }
