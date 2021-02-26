@@ -1,0 +1,62 @@
+.adder_div{
+    border: 5px solid rebeccapurple;
+    background-color: skyblue;
+  }
+  
+  .b{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+  
+  .r{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+  }
+  
+  .maze{
+    text-align: center;
+    width: 570px;
+    height: 600px;
+    margin-top: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .box{
+    border: 1px solid black;
+  
+    width: 20px;
+    height: 20px;
+    border: 1px solid blueviolet;
+    background-color: aquamarine;
+    display: inline-block;
+    margin: 0px;
+  }
+  
+  .rbox{
+    border: 1px solid black;
+  
+    width: 20px;
+    height: 20px;
+    border: 1px solid blueviolet;
+    background-color: palevioletred;
+    display: inline-block;
+    margin: 0px;
+  }
+  
+  .endbox{
+    width: 20px;
+    height: 20px;
+    border: 1px solid blueviolet;
+    background-color: aquamarine;
+    display: inline-block;
+    margin: 0px;
+  }
+  
+  .boxrow{
+    margin-top: 0;
+    padding: 0px;
+    margin: 0px;
+  }

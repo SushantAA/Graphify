@@ -1,6 +1,29 @@
 .Box{
-    background-color: blue;
+    /* background-color: blue; */
     border: 0.2rem solid yellowgreen;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+
+.Wall{
+    /* background-color: black; */
+    border: 0.2rem solid yellowgreen;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+.Start{
+    /* background-color: green; */
+    border: 0.2rem solid yellowgreen;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+.End{
+    /* background-color: red; */
+    border: 0.2rem solid yellowgreen;
+    display: inline-block;
     height: 2rem;
     width: 2rem;
 }
