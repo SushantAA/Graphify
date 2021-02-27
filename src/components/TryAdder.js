@@ -5,7 +5,7 @@ import '../App.css'
 export default function TryAdder() {
 
     let all_adder = [
-        {id:1,value:5,add:1},
+        {id:1,value:5,add:3},
         {id:2,value:15,add:2},
         {id:3,value:6,add:4},
         {id:4,value:8,add:7},
