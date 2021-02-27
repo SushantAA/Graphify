@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>heelo</h1>
-      <TryAdder/>
+      {/* <TryAdder/> */}
       <Maze/>
     </div>
   );

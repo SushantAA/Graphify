@@ -19,7 +19,7 @@ let mazeArray_first_fill = () =>{
             }
             // neighbour_list_array[6] = {y:j,x:i};
             neighbour_list_array[6] = make_id(i,j);
-            neighbour_list_array[4] = 'Box';
+            neighbour_list_array[4] = 0;
             neighbour_list_array[5] = 1;
             neighbour_list_array[7] = kk;
             mazeArray[j][i] = neighbour_list_array;
@@ -45,6 +45,10 @@ let mazeArray_first_fill = () =>{
             mazeArray[j][i-1][1]=1;
         }
     }
+
+    mazeArray[1][1][4] = 3;
+    mazeArray[9][9][4] = 2;
+
 }
 
 mazeArray_first_fill();
