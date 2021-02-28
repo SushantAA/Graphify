@@ -2,6 +2,7 @@ import React, { useEffect,useState } from "react";
 
 import { mazeArray } from "../logic/mazeCreation";
 import { bfs } from "../logic/algorithms/bfs";
+import { dfs } from "../logic/algorithms/dfs";
 
 import Box from "./Box";
 import BfsButton from "./menubar/BfsButton";
@@ -119,28 +120,49 @@ export default function Maze() {
         update_bc(ss);
       }
     }, 100);
-
-
-// ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    // clearInterval(rep);
-
-    //   mazeArrayStateUpdate(tt);
-    //   if(ac=='rr'){
-    //   setac('bb');
-    // }else{
-    //     setac('rr');
-    //   }
-    //   console.log('[[[[[[[[[[');
-    //   console.log(tt);
   }
 
-  // /==============================================
+  const dfs_do = () => {
+    console.log("heheheeee");
+    let sss = mazeArrayState;
 
+    console.log('==================');
+    // mazeArrayStateUpdate(
+    let visited_animate = dfs(
+      sss,
+      start_square_vertical,
+      start_square_horizonatal,
+      end_square_vertical,
+      end_square_horizonatal,
+      10,
+      10
+    );
 
+    console.log('visited_animate=',visited_animate);
+
+    console.log('||||||||||||||||||');
+
+    let rep = setInterval(function () {
+      console.log("animai");
+      if (visited_animate.length == 0) {
+        clearInterval(rep);
+        return;
+      } else {
+        let id = visited_animate[0];
+        visited_animate.shift();
+        let [j, i] = stringId(id);
+        let ss = mazeArrayState;
+        ss[i][j][4] = 5;
+        // console.log(id);
+        update_bc(ss);
+      }
+    }, 100);
+  }
 
   return (
     <div className={ac}>
       <button onClick={bfs_do}>bfs</button>
+      <button onClick={dfs_do}>dfs</button>
       {mazeArrayState.map((item) => (
         <div key={item}>
           {item.map((ii) => (
