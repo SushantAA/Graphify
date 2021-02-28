@@ -61,7 +61,7 @@ let bfs = (
     if (j > 0) {
       let tid = make_id(j - 1, i);
       if (h.has(tid) === false && maze_array[j - 1][i][4] != 1) {
-        maze_array[j - 1][i][4] = 5;
+        // maze_array[j - 1][i][4] = 5;
         console.log("tid has = ", h.has(tid));
         q.push(tid);
         h.set(tid, true);
@@ -70,7 +70,7 @@ let bfs = (
     if (i > 0) {
       let tid = make_id(j, i - 1);
       if (h.has(tid) === false && maze_array[j][i - 1][4] != 1) {
-        maze_array[j][i-1][4] = 5;
+        // maze_array[j][i-1][4] = 5;
         console.log("tid has = ", h.has(tid));
         q.push(tid);
         h.set(tid, true);
@@ -79,7 +79,7 @@ let bfs = (
     if (j < vertical_height - 1) {
       let tid = make_id(j + 1, i);
       if (h.has(tid) === false && maze_array[j + 1][i][4] != 1) {
-        maze_array[j + 1][i][4] = 5;
+        // maze_array[j + 1][i][4] = 5;
         console.log("tid has = ", h.has(tid));
         q.push(tid);
         h.set(tid, true);
@@ -88,7 +88,7 @@ let bfs = (
     if (i < horizontal_width - 1) {
       let tid = make_id(j, i + 1);
       if (h.has(tid) === false && maze_array[j][i + 1][4] != 1) {
-        maze_array[j][i+1][4] = 5;
+        // maze_array[j][i+1][4] = 5;
         console.log("tid has = ", h.has(tid));
         q.push(tid);
         h.set(tid, true);
@@ -104,7 +104,7 @@ let bfs = (
 
   console.log('maze_array2 = ',maze_array);
 
-  return maze_array;
+  return [maze_array,visited_animate];
 };
 
 module.exports={bfs}
