@@ -15,17 +15,12 @@ export default function Maze() {
 
   let start_square_id = "7,7";
   let end_square_id = "9,20";
-
-  // mazeArray[start_square_vertical][start_square_horizonatal][]
-
-  // console.log(mazeArray);
+  
   const [mazeArrayState, mazeArrayStateUpdate] = useState(mazeArray);
   const [drag, setdrag] = useState(false);
   const [ac, setac] = useState('bb');
-  const [blood, setblood] = useState(false)
 
   const stringId = (id) => {
-    // console.log('move id ======== ',id);
     let k = 0;
     let j = "";
     for (; k < id.length && id[k] != ","; k++) {
@@ -44,14 +39,8 @@ export default function Maze() {
   const aaa = (id, blockState) => {
     const a = mazeArrayState;
     let [i, j] = stringId(id);
-    // console.log(i,j);
     a[i][j][4] = blockState;
-    // console.log('blockState = ',blockState);
-    // console.log('a = ');
-    // console.log(a);
     mazeArrayStateUpdate(a);
-    // console.log('mazeArrayState = ');
-    // console.log(mazeArrayState);
   };
 
   const setdragmazet = () => {
@@ -65,10 +54,6 @@ export default function Maze() {
 
   const update_bc = (ss) => {
     mazeArrayStateUpdate(ss);
-    let bb = blood;
-    bb = !bb;
-    setblood(bb);
-
     if (uu) {
       console.log(1);
       setac('bb');
@@ -77,34 +62,11 @@ export default function Maze() {
       setac('rr');
     }
     uu = !uu;
-    console.log('uu=',uu);
-    console.log('bb=',bb);
-    console.log('ac=',ac);
-    console.log('blood=',blood);
-    console.log(mazeArrayState);
   };
 
   let uu = false;
 
-  const bfs_do = () => {
-    console.log("heheheeee");
-    let sss = mazeArrayState;
-
-    console.log('==================');
-    // mazeArrayStateUpdate(
-    let [tt, visited_animate] = bfs(
-      sss,
-      start_square_vertical,
-      start_square_horizonatal,
-      end_square_vertical,
-      end_square_horizonatal,
-      10,
-      10
-    );
-
-
-    console.log('||||||||||||||||||');
-
+  const hh = (visited_animate) => {
     let rep = setInterval(function () {
       console.log("animai");
       if (visited_animate.length == 0) {
@@ -122,6 +84,26 @@ export default function Maze() {
     }, 100);
   }
 
+  const bfs_do = () => {
+    console.log("heheheeee");
+    let sss = mazeArrayState;
+
+    console.log('==================');
+    // mazeArrayStateUpdate(
+    let [tt, visited_animate] = bfs(
+      sss,
+      start_square_vertical,
+      start_square_horizonatal,
+      end_square_vertical,
+      end_square_horizonatal,
+      10,
+      10
+    );
+
+    hh(visited_animate);
+
+  }
+
   const dfs_do = () => {
     console.log("heheheeee");
     let sss = mazeArrayState;
@@ -137,26 +119,7 @@ export default function Maze() {
       10,
       10
     );
-
-    console.log('visited_animate=',visited_animate);
-
-    console.log('||||||||||||||||||');
-
-    let rep = setInterval(function () {
-      console.log("animai");
-      if (visited_animate.length == 0) {
-        clearInterval(rep);
-        return;
-      } else {
-        let id = visited_animate[0];
-        visited_animate.shift();
-        let [j, i] = stringId(id);
-        let ss = mazeArrayState;
-        ss[i][j][4] = 5;
-        // console.log(id);
-        update_bc(ss);
-      }
-    }, 100);
+      hh(visited_animate);
   }
 
   return (
