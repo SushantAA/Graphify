@@ -27,6 +27,9 @@ export default function Box({
   else if(boxarr[4]==3){
     x='Start';
   }
+  else if(boxarr[4]==5){
+    x='Visit';
+  }
   
   const [state, setstate] = useState(x);
 

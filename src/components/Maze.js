@@ -1,8 +1,11 @@
 import React , {useState} from 'react'
 
 import {mazeArray} from '../logic/mazeCreation'
+import {bfs} from '../logic/algorithms/bfs'
 
 import Box from './Box'
+import BfsButton from './menubar/BfsButton'
+
 
 export default function Maze() {
 
@@ -19,6 +22,7 @@ export default function Maze() {
     // console.log(mazeArray);
     const [mazeArrayState,mazeArrayStateUpdate] = useState(mazeArray);
     const [drag, setdrag] = useState(false)
+    const [ac, setac] = useState('bb')
 
     const stringId = (id) =>{
         // console.log('move id ======== ',id);
@@ -59,8 +63,34 @@ export default function Maze() {
     setdrag(false);
  }
 
+ const bfs_do = () => {
+   console.log('heheheeee')
+    // mazeArrayStateUpdate(
+   const tt =  bfs (
+       mazeArrayState,
+        start_square_vertical,
+        start_square_horizonatal,
+         end_square_vertical,
+       end_square_horizonatal,
+         10,
+         10 
+      );
+
+      mazeArrayStateUpdate(tt);
+      if(ac=='rr'){
+      setac('bb');}else{
+        setac('rr');
+      }
+      console.log('[[[[[[[[[[');
+      console.log(tt);
+    // );
+ }
+
    return (
-        <div>
+        <div className={ac}>
+            <button onClick={bfs_do} >
+                bfs
+            </button>
             {
                 mazeArrayState.map( (item) =>(
                         <div key={item} >

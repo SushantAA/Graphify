@@ -20,6 +20,13 @@
     height: 2rem;
     width: 2rem;
 }
+.Visit{
+    background-color: pink;
+    border: 0.2rem solid yellowgreen;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
 .End{
     background-color: red;
     border: 0.2rem solid yellowgreen;
