@@ -4,6 +4,7 @@ import { mazeArray } from "../logic/mazeCreation";
 import { bfs } from "../logic/algorithms/bfs";
 import { dfs } from "../logic/algorithms/dfs";
 import { bfsPath } from "../logic/algorithms/bfsPath";
+import { dijkstra } from "../logic/algorithms/dijkstra";
 
 import Box from "./Box";
 import BfsButton from "./menubar/BfsButton";
@@ -85,23 +86,7 @@ export default function Maze() {
     }, 100);
   }
 
-  const mhh = (visited_animate,min_distance_node_array) => {
-    
-    let repa =  setInterval(function () {
-      console.log("animai");
-      if (visited_animate.length == 0) {
-        clearInterval(repa);
-        return;
-      } else {
-        let id = visited_animate[0];
-        visited_animate.shift();
-        let [j, i] = stringId(id);
-        let ss = mazeArrayState;
-        ss[i][j][4] = 5;
-        // console.log(id);
-        update_bc(ss);
-      }
-    }, 100);
+  const mhh = async (min_distance_node_array) => {
     let rep =  setInterval(function () {
       console.log("animai");
       if (min_distance_node_array.length == 0) {
@@ -159,8 +144,33 @@ export default function Maze() {
     console.log('visited_animate',visited_animate);
     console.log('min_distance_node_array = ',min_distance_node_array);
 
-    // await hh(visited_animate);
-    mhh(visited_animate,min_distance_node_array);
+    await hh(visited_animate);
+    mhh(min_distance_node_array);
+
+  }
+
+  
+  const dijkstra_do = async () => {
+    console.log("heheheeee");
+    let sss = mazeArrayState;
+
+    console.log('==================');
+    // mazeArrayStateUpdate(
+    let [visited_animate,min_distance_node_array] = dijkstra(
+      sss,
+      start_square_vertical,
+      start_square_horizonatal,
+      end_square_vertical,
+      end_square_horizonatal,
+      10,
+      10
+    );
+
+    console.log('visited_animate',visited_animate);
+    console.log('min_distance_node_array = ',min_distance_node_array);
+
+    await hh(visited_animate);
+    await mhh(min_distance_node_array);
 
   }
 
@@ -186,6 +196,7 @@ export default function Maze() {
     <div className={ac}>
       <button onClick={bfs_do}>bfs</button>
       <button onClick={bfs_path_do}>bfsPath</button>
+      <button onClick={dijkstra_do}>dijkstra</button>
       <button onClick={dfs_do}>dfs</button>
       {mazeArrayState.map((item) => (
         <div key={item}>
