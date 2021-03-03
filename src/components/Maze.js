@@ -5,6 +5,7 @@ import { bfs } from "../logic/algorithms/bfs";
 import { dfs } from "../logic/algorithms/dfs";
 import { bfsPath } from "../logic/algorithms/bfsPath";
 import { dijkstra } from "../logic/algorithms/dijkstra";
+import { astar } from "../logic/algorithms/astar";
 
 import Box from "./Box";
 import BfsButton from "./menubar/BfsButton";
@@ -174,6 +175,31 @@ export default function Maze() {
 
   }
 
+
+  const astar_do = async () => {
+    console.log("heheheeee");
+    let sss = mazeArrayState;
+
+    console.log('==================');
+    // mazeArrayStateUpdate(
+    let [visited_animate,min_distance_node_array] = astar(
+      sss,
+      start_square_vertical,
+      start_square_horizonatal,
+      end_square_vertical,
+      end_square_horizonatal,
+      10,
+      10
+    );
+
+    console.log('visited_animate',visited_animate);
+    console.log('min_distance_node_array = ',min_distance_node_array);
+
+    await hh(visited_animate);
+    await mhh(min_distance_node_array);
+
+  }
+
   const dfs_do = () => {
     console.log("heheheeee");
     let sss = mazeArrayState;
@@ -197,6 +223,7 @@ export default function Maze() {
       <button onClick={bfs_do}>bfs</button>
       <button onClick={bfs_path_do}>bfsPath</button>
       <button onClick={dijkstra_do}>dijkstra</button>
+      <button onClick={astar_do}>astar</button>
       <button onClick={dfs_do}>dfs</button>
       {mazeArrayState.map((item) => (
         <div key={item}>
