@@ -30,6 +30,11 @@ export default function Box({
   else if(boxarr[4]==5){
     x='Visit';
   }
+  else if(boxarr[4]==6){
+    x='Min';
+  }
+  
+
   
   const [state, setstate] = useState(x);
 

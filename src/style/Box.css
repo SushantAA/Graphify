@@ -34,3 +34,11 @@
     height: 2rem;
     width: 2rem;
 }
+
+.Min{
+    background-color: rebeccapurple;
+    border: 0.2rem solid yellowgreen;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
