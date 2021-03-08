@@ -126,6 +126,9 @@ export default function Maze() {
   let uu = false;
 
   const hh =  (visited_animate, min_distance_node_array = null) => {
+
+    let previous = "";
+
     let rep =  setInterval(function () {
       console.log("animai");
       if (visited_animate.length == 0) {
@@ -135,33 +138,49 @@ export default function Maze() {
         }
         return;
       } else {
+        let ss = mazeArrayState;
+
+        if(previous!=""){
+          let [j, i] = stringId(previous);
+          ss[i][j][4] = 5;
+        }
+
         let id = visited_animate[0];
         visited_animate.shift();
         let [j, i] = stringId(id);
-        let ss = mazeArrayState;
-        ss[i][j][4] = 5;
+        ss[i][j][4] = 15;
         // console.log(id);
+        previous = id;
         update_bc(ss);
       }
-    }, 100);
+    }, 200);
 
 
     return rep;
   };
 
   const mhh =  (min_distance_node_array) => {
+    
+    let previous = "";
     let rep =  setInterval(function () {
       console.log("animai");
       if (min_distance_node_array.length == 0) {
         clearInterval(rep);
         return;
       } else {
+        let ss = mazeArrayState;
+
+        if(previous!=""){
+          let [j, i] = stringId(previous);
+          ss[i][j][4] = 6;
+        }
+
         let id = min_distance_node_array[0];
         min_distance_node_array.shift();
         let [j, i] = stringId(id);
-        let ss = mazeArrayState;
-        ss[i][j][4] = 6;
+        ss[i][j][4] = 16;
         // console.log(id);
+        previous = id;
         update_bc(ss);
       }
     }, 100);
@@ -190,6 +209,8 @@ export default function Maze() {
       10,
       10
     );
+
+    min_distance_node_array.reverse();
 
     console.log("visited_animate", visited_animate);
     console.log("min_distance_node_array = ", min_distance_node_array);

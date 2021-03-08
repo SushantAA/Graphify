@@ -29,6 +29,14 @@
 }
 
 .Visit{
+  background-color: pink;
+  border: 0.2rem solid yellowgreen;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.AniVisit{
     background-color: pink;
     border: 0.2rem solid yellowgreen;
     display: inline-block;
@@ -84,14 +92,23 @@
     height: 2rem;
     width: 2rem;
 
-    animation-name: min_node_square_animation;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
+}
+
+.AniMin{
+  background-color: rebeccapurple;
+  border: 0.2rem solid yellowgreen;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+
+  animation-name: min_node_square_animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 
 

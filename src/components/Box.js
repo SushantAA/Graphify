@@ -33,6 +33,10 @@ export default function Box({
     x = "Visit";
   } else if (boxarr[4] == 6) {
     x = "Min";
+  } else if (boxarr[4]== 15){
+    x = "AniVisit";
+  }else if (boxarr[4]== 16){
+    x = "AniMin";
   }
   const [state, setstate] = useState(x);
 
