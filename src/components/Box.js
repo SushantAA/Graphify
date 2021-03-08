@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 
 import "../style/Box.css";
 
@@ -15,45 +15,92 @@ export default function Box({
   drag,
   setdragmazet,
   setdragmazef,
+  start_do,
+  end_do,
+  startControl,
+  wallControl,
+  endControl,
   aaa,
 }) {
-  let x = 'Box';
-  if(boxarr[4]==1){
-    x='Wall';
+  let x = "Box";
+  if (boxarr[4] == 1) {
+    x = "Wall";
+  } else if (boxarr[4] == 2) {
+    x = "End";
+  } else if (boxarr[4] == 3) {
+    x = "Start";
+  } else if (boxarr[4] == 5) {
+    x = "Visit";
+  } else if (boxarr[4] == 6) {
+    x = "Min";
   }
-  else if(boxarr[4]==2){
-    x='End';
-  }
-  else if(boxarr[4]==3){
-    x='Start';
-  }
-  else if(boxarr[4]==5){
-    x='Visit';
-  }
-  else if(boxarr[4]==6){
-    x='Min';
-  }
-  
-
-  
   const [state, setstate] = useState(x);
 
   // console.log('key = ',key);
   // console.log('boxarr = ',boxarr);
 
+  // useEffect(() => {
+  //   setstate(x);
+  //   // console.log('change');
+  // }, [state]);
+
+  let uu = false;
+
   const makeWall = () => {
-      if (drag && state=='Box' ) {
-        setstate("Wall");
-        console.log("mouse overrrrrrrr");
-        aaa(boxarr[6], 1);
+    
+    console.log('wallControl = ',wallControl);
+
+
+
+    if (drag && state == "Box" && !uu) {
+      if(wallControl){
+      setstate("Wall");
+      console.log("mouse overrrrrrrr");
+      aaa(boxarr[6], 1);
       }
+      if(startControl){
+        // setstate("Start");
+        console.log("mouse overrrrrrrr");
+        aaa(boxarr[6], 3);
+        // setstate("Box");
+
+      }
+      if(endControl){
+        // setstate("Start");
+        console.log("mouse overrrrrrrr");
+        aaa(boxarr[6], 2);
+        // setstate("Box");
+
+      }
+    }else if(drag && state == "Start"){
+    if(wallControl){
+      uu = true;
+      // setstate("Start");
+      console.log("mouse overrrrrrrr");
+      aaa(boxarr[6], 3);
+      setstate("Box");
+    }
+    
+    }
   };
 
   const bc_setdragmazet = () => {
+    if(state=="End"){
+      end_do(true);
+    }
+    if(state=="Start"){
+      start_do(true);
+    }
     setdragmazet();
   };
 
   const bc_setdragmazef = () => {
+    if(state=="End"){
+      end_do(false);
+    }
+    if(state=="Start"){
+      start_do(false);
+    }
     setdragmazef();
   };
 

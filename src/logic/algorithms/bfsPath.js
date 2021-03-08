@@ -56,6 +56,12 @@ const bfsPath = (
   vertical_height,
   horizontal_width
 ) => {
+
+  console.log('=========== bfs path ===================');
+  console.log('end_square_vertical = ',end_square_vertical,' end_square_horizonatal = ',end_square_horizonatal);
+  console.log('start_square_vertical = ',start_square_vertical,' start_square_horizonatal = ',start_square_horizonatal);
+
+
   let distance = new Map();
   let parent = new Map();
   // let arr = [];
