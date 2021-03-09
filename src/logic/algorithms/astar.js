@@ -110,14 +110,13 @@ let astar = (
         if(i>0){
             let tid =make_id(j,i-1);
             if((!distance.has(tid)) && maze_array[j][i-1][4]!=1){
-                
                     let hd = h_value_function(j,i-1,end_square_vertical,end_square_horizonatal);
                     hvalue.set(tid,d+maze_array[j][i-1][5]+hd);
                     distance.set(tid,d+maze_array[j][i-1][5]);
                     parent.set(tid,id);
                     arr.push(tid);
             }
-            else{ 
+            else{
                 if(((d+maze_array[j][i-1][5]) <distance.get(tid)) && maze_array[j][i-1][4]!=1){
                     distance.delete(tid);
                     hvalue.delete(tid);
@@ -134,7 +133,6 @@ let astar = (
         if(j<vertical_height-1){
             let tid =make_id(j+1,i);
             if((!distance.has(tid)) && maze_array[j+1][i][4]!=1){
-                
                     let hd = h_value_function(j+1,i,end_square_vertical,end_square_horizonatal);
                     hvalue.set(tid,d+maze_array[j+1][i][5]+hd);
                     distance.set(tid,d+maze_array[j+1][i][5]);

@@ -1,5 +1,4 @@
 const stringId = (id) => {
-  // console.log('move id ======== ',id);
   let k = 0;
   let j = "";
   for (; k < id.length && id[k] != ","; k++) {
@@ -17,8 +16,6 @@ const stringId = (id) => {
 
 let coordinate_from_id = (id) =>{
     let j="",i="";
-    // console.log('move id ===== ',id);
-    console.log("id =" ,typeof(id))
     let k=0;
     for(;k<id.length && id[k]!=',';k++)  j =j + id[k];
     k++;

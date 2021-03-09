@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../style/Box.css";
 
@@ -13,10 +13,12 @@ export default function Box({
   end_square_horizonatal,
 
   drag,
-  setdragmazet,
-  setdragmazef,
-  start_do,
-  end_do,
+  setDragMazeT,
+  setDragMazeF,
+  startDo,
+  endDo,
+  add3,
+  add5,
   startControl,
   wallControl,
   endControl,
@@ -33,90 +35,87 @@ export default function Box({
     x = "Visit";
   } else if (boxarr[4] == 6) {
     x = "Min";
-  } else if (boxarr[4]== 15){
+  } else if (boxarr[4] == 15) {
     x = "AniVisit";
-  }else if (boxarr[4]== 16){
+  } else if (boxarr[4] == 16) {
     x = "AniMin";
+  } else if (boxarr[4] == 25) {
+    x = "Add5";
+  }else if (boxarr[4] == 23) {
+    x = "Add3";
   }
   const [state, setstate] = useState(x);
 
-  // console.log('key = ',key);
-  // console.log('boxarr = ',boxarr);
-
-  // useEffect(() => {
-  //   setstate(x);
-  //   // console.log('change');
-  // }, [state]);
-
   let uu = false;
 
+  const check = (id) => {
+    let [i, j] = stringId(id);
+    // a[i][j][4] ;
+    if(i==start_square_vertical && j==start_square_horizonatal )  return false;
+    if(i==end_square_vertical && j==end_square_horizonatal )  return false;
+    return true;
+  }
+
+
   const makeWall = () => {
-    
-    console.log('wallControl = ',wallControl);
-
-
-
     if (drag && state == "Box" && !uu) {
-      if(wallControl){
-      setstate("Wall");
-      console.log("mouse overrrrrrrr");
-      aaa(boxarr[6], 1);
+      if (wallControl  && check(boxarr[6]) ){
+        setstate("Wall");
+        aaa(boxarr[6], 1);
       }
-      if(startControl){
-        // setstate("Start");
-        console.log("mouse overrrrrrrr");
+      if (startControl && check(boxarr[6]) ) {
         aaa(boxarr[6], 3);
-        // setstate("Box");
-
       }
-      if(endControl){
-        // setstate("Start");
-        console.log("mouse overrrrrrrr");
+      if (endControl && check(boxarr[6]) ) {
         aaa(boxarr[6], 2);
-        // setstate("Box");
-
       }
-    }else if(drag && state == "Start"){
-    if(wallControl){
-      uu = true;
-      // setstate("Start");
-      console.log("mouse overrrrrrrr");
-      aaa(boxarr[6], 3);
-      setstate("Box");
-    }
-    
+      if (add5)  {
+        console.log('======= 5');
+        setstate("Add5");
+        aaa(boxarr[6], 25);
+      }
+      if (add3)  {
+        console.log('======= 3');
+
+        setstate("Add3");
+        aaa(boxarr[6], 23);
+      }
+    } else if (drag && state == "Start") {
+      if (wallControl  && check(boxarr[6]) ) {
+        uu = true;
+        aaa(boxarr[6], 3);
+        setstate("Box");
+      }
     }
   };
 
-  const bc_setdragmazet = () => {
-    if(state=="End"){
-      end_do(true);
+  const bc_setDragMazeT = () => {
+    if (state == "End") {
+      endDo(true);
     }
-    if(state=="Start"){
-      start_do(true);
+    if (state == "Start") {
+      startDo(true);
     }
-    setdragmazet();
+    setDragMazeT();
   };
 
-  const bc_setdragmazef = () => {
-    if(state=="End"){
-      end_do(false);
+  const bc_setDragMazeF = () => {
+    if (state == "End") {
+      endDo(false);
     }
-    if(state=="Start"){
-      start_do(false);
+    if (state == "Start") {
+      startDo(false);
     }
-    setdragmazef();
+    setDragMazeF();
   };
 
   return (
     <div
       className={state}
-      onMouseDown={bc_setdragmazet}
-      onMouseUp={bc_setdragmazef}
+      onMouseDown={bc_setDragMazeT}
+      onMouseUp={bc_setDragMazeF}
       onMouseMove={makeWall}
       onClick={makeWall}
-    >
-      {/* {    console.log('bbbbbbbbbbbbb')} */}
-    </div>
+    ></div>
   );
 }

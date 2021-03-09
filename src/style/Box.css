@@ -12,7 +12,35 @@
     display: inline-block;
     height: 2rem;
     width: 2rem;
+
+    animation-name: wall_creation_animation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
 }
+
+@keyframes wall_creation_animation{
+  0% {
+      transform: scale(.3);
+      background-color: black;
+    }
+  
+    50% {
+      transform: scale(1.2);
+      background-color: black;
+    }
+  
+    100% {
+      transform: scale(1.0);
+      background-color:black;
+    }
+
+}
+
 .Start{
     background-color: green;
     border: 0.2rem solid yellowgreen;
@@ -139,4 +167,20 @@
         background-color:orange;
       }
 
+}
+
+.Add5{
+  background-color: orange;
+  border: 0.2rem solid yellowgreen;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.Add3{
+  background-color: greenyellow;
+  border: 0.2rem solid yellowgreen;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
 }
